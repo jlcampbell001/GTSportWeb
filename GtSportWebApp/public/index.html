@@ -1,0 +1,30 @@
+﻿<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <meta charset="utf-8" />
+    <title>GTSport</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-route.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.js"></script>
+    <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script> 
+    <script src="/javascripts/gtsportApp.js"></script>
+    <link rel="stylesheet" href="stylesheets/gtsportstyle.css">
+</head>
+<body ng-app="gtsportApp">
+    <div id='main' class="container">
+        <nav class="navbar-fluid navbar-default navbar-fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="#/"> Owned Cars </a>
+                <a class="navbar-brand" href="#"> Cars </a>
+                <a class="navbar-brand" href="#/owners"> Owners </a>
+                <a class="navbar-brand" href="#"> Dealers </a>
+                <a class="navbar-brand" href="#"> Regions </a>
+                <a class="navbar-brand" href="#"> Countries </a>
+                <p class="navbar-right navbar-text">Owner: {{current_owner.name}}</p>
+            </div>
+        </nav>
+        <div ng-view class="gtsportWorkArea"></div>
+        </div>
+</body>
+</html>
