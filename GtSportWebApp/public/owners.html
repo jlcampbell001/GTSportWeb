@@ -1,24 +1,21 @@
 ﻿<div class="gtsportWorkArea">
-    <form>
-        <aside>
-            <div id="ownerList" class="gtsportListBox">
-                <select ng-model="selectedOwner" ng-attr-size="{{setOwnerListSize()}}" ng-change="ownerSelect()">
-                    <option value={{listOwner.primaryKey}} ng-repeat="listOwner in owners">{{getOwnerSelectName(listOwner)}}</option>
-                </select>
-            </div>
-        </aside>
-        <article id="ownerSection" class="gtsportUserArea">
-            <input type="text" name="ownerName" ng-model="owner.name" placeholder="Name" />
+    <form ng-submit="ownerSubmit()">
+        <div id="ownerList" class="gtsportListBox">
+            <select ng-model="selectedOwner" ng-attr-size="{{setOwnerListSize()}}" ng-change="ownerSelect()">
+                <option value="{{newOwner.primaryKey}}">{{newOwner.name}}</option>
+                <option value={{listOwner.primaryKey}} ng-repeat="listOwner in owners | orderBy: 'name'">
+                    {{getOwnerSelectName(listOwner)}}
+                </option>
+            </select>
+        </div>
+        <div id="ownerSection" class="gtsportUserArea">
+            <input type="text" name="ownerName" ng-model="owner.name" placeholder="Name" required />
             <span class="currentOwnerListItem" ng-show="owner.current">  Currently Set Owner</span><br />
             <input type="checkbox" name="ownerDefault" ng-model="owner.default" /> Default Start Owner<br />
-            <input type="button" name="ownerSubmit" value="Submit" ng-click="ownerSubmit()" />
+            <input type="submit" name="ownerSubmit" value="Submit" />
             <input type="button" name="ownerDelete" value="Delete" ng-click="ownerDelete()" ng-show="ownerAllowDelete()" />
             <input type="button" name="ownerSetCurrent" value="Set to Current" ng-click="ownerSetCurrent()" ng-show="ownerAllowSetToCurrent()" />
-        </article>
+        </div>
     </form>
-
-    <br />{{owner}}<br />
-    {{owners}}<br />
-    {{setOwnerListSize()}}
 </div>
 
