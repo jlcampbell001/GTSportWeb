@@ -32,7 +32,10 @@
   <ItemGroup>
     <Compile Include="app.js" />
     <Compile Include="public\javascripts\gtsportApp.js" />
+    <Compile Include="public\javascripts\owners.api.js" />
     <Compile Include="public\javascripts\owners.controller.js" />
+    <Compile Include="public\javascripts\regions.api.js" />
+    <Compile Include="public\javascripts\regions.controller.js" />
     <Compile Include="routes\index.js" />
     <Compile Include="routes\users.js" />
     <Compile Include="bin\www" />
@@ -40,6 +43,7 @@
     <Content Include="public\ownedcars.html" />
     <Content Include="public\owners.html" />
     <Content Include="public\index.html" />
+    <Content Include="public\regions.html" />
     <Content Include="README.md" />
     <Content Include="typings.json" />
     <Content Include="views\index.jade" />

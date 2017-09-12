@@ -9,9 +9,9 @@
             </select>
         </div>
         <div id="ownerSection" class="gtsportUserArea">
-            <input type="text" name="ownerName" ng-model="owner.name" placeholder="Name" required />
-            <span class="currentOwnerListItem" ng-show="owner.current">  Currently Set Owner</span><br />
-            <input type="checkbox" name="ownerDefault" ng-model="owner.default" /> Default Start Owner<br />
+            <input type="text" name="ownerName" ng-model="workOwner.name" placeholder="Name" required />
+            <span class="currentOwnerListItem" ng-show="workOwner.current">  Currently Set Owner</span><br />
+            <input type="checkbox" name="ownerDefault" ng-model="workOwner.defaultOwner" /> Default Start Owner<br />
             <input type="submit" name="ownerSubmit" value="Submit" />
             <input type="button" name="ownerDelete" value="Delete" ng-click="ownerDelete()" ng-show="ownerAllowDelete()" />
             <input type="button" name="ownerSetCurrent" value="Set to Current" ng-click="ownerSetCurrent()" ng-show="ownerAllowSetToCurrent()" />

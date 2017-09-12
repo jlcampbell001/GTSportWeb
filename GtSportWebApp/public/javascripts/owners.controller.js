@@ -1,34 +1,36 @@
 ﻿app.controller('ownersController', function ($scope, $rootScope) {
-    var blankOwner = { primaryKey: '', name: '', default: false, current: false };
+    var blankOwner = new owner('', '', false, false);
+
     var minOwnerListSize = 5;
     var maxOwnerListSize = 20;
 
-    $scope.newOwner = { primaryKey: '', name: '--New Owner--', default: false, current: false };
-    $scope.owner = { primaryKey: '', name: '', default: false, current: false };
+    $scope.newOwner = new owner('', '--New Owner--', false, false);
 
-    if (typeof $rootScope.owners === 'undefined') {
-        $rootScope.owners = [{ primaryKey: 'OWN9000000001', name: 'Owner 1', default: true, current: false },
-            { primaryKey: 'OWN9000000002', name: 'Owner 2', default: false, current: false },
-            { primaryKey: 'OWN9000000003', name: 'Owner 3', default: false, current: false }];
-    }
+    // The owner that the user is currently working on.
+    $scope.workOwner = new owner('', '', false, false );
 
-    for (var i = 0; i < $rootScope.owners.length; i++) {
-        if ($rootScope.owners[i].primaryKey === $rootScope.current_owner.primaryKey) {
-            $rootScope.owners[i].current = true;
-        }
-    }
-
+    // The owner that has been selected in the owner select object.
     $scope.selectedOwner = $scope.newOwner.primaryKey;
 
+    // Creates an owner name to be shown in the owner select list.
     $scope.getOwnerSelectName = function (owner) {
         var selectName = owner.name;
+        var namePrefix = '';
 
         if (owner.current) {
-            selectName = "(C) " + selectName;
+            namePrefix = '(C) ';
         }
+
+        if (owner.defaultOwner) {
+            namePrefix = namePrefix + '(D) ';
+        }
+
+        selectName = namePrefix + selectName;
+
         return selectName;
     }
 
+    // Sets the min or max size of the owner select list.
     $scope.setOwnerListSize = function () {
         var listSize = $rootScope.owners.length + 1;
 
@@ -42,92 +44,69 @@
         return listSize;
     }
 
+    // Selecting an owner in the owner select list.
     $scope.ownerSelect = function () {
         var primaryKey = $scope.selectedOwner;
         if (primaryKey === "") {
-            $scope.owner = jQuery.extend({}, blankOwner);
+            $scope.workOwner = jQuery.extend({}, blankOwner);
         } else {
-            $scope.owner = jQuery.extend({}, findOwnerByKey(primaryKey));
+            $scope.workOwner = jQuery.extend({}, findOwnerByKey(primaryKey));
         }
     }
 
+    // Checks to see if the owner the user is working on can be deleted.
     $scope.ownerAllowDelete = function () {
         var deleteOK = true;
 
-        if ($scope.owner.current) {
+        if ($scope.workOwner.current) {
             deleteOK = false;
         }
 
-        if ($scope.owner.primaryKey === "") {
+        if ($scope.workOwner.primaryKey === "") {
             deleteOK = false;
         }
 
         return deleteOK;
     }
 
+    // Checks to see if the owner the user is working on can be set as the currently owner.
     $scope.ownerAllowSetToCurrent = function () {
         var setToCurrentOK = true;
 
-        if ($scope.owner.current) {
+        if ($scope.workOwner.current) {
             setToCurrentOK = false;
         }
 
-        if ($scope.owner.primaryKey === "") {
+        if ($scope.workOwner.primaryKey === "") {
             setToCurrentOK = false;
         }
 
         return setToCurrentOK;
     }
 
+    // Sets the owner the user is working on as the curret owner.
     $scope.ownerSetCurrent = function () {
-        var oldOwner = findOwnerByKey($rootScope.current_owner.primaryKey);
-        oldOwner.current = false;
+        setCurrentOwner($rootScope.current_owner.primaryKey, $scope.workOwner.primaryKey);
 
-        var newOwner = findOwnerByKey($scope.owner.primaryKey);
-        newOwner.current = true;
-
-        $scope.owner = jQuery.extend({}, newOwner);
-
-        $rootScope.current_owner = jQuery.extend({}, newOwner);
+        $scope.owner = jQuery.extend({}, $rootScope.current_owner);
     }
 
+    // Deletes the owner.
     $scope.ownerDelete = function () {
-        for (var i = 0; i < $rootScope.owners.length; i++) {
-            if ($scope.owner.primaryKey === $rootScope.owners[i].primaryKey) {
-                $rootScope.owners.splice(i, 1);
-            }
-        }
+        deleteOwner($scope.workOwner.primaryKey);
+
         $scope.selectedOwner = "";
         $scope.ownerSelect();
     }
 
+    // Saves a new or updates an owner.
     $scope.ownerSubmit = function () {
-        if ($scope.owner.primaryKey === "") {
-            var lastOwnerNumber = $rootScope.owners.length;
+        saveOwner($scope.workOwner);
 
-            $scope.owner.primaryKey = "OWN000000000" + lastOwnerNumber.toString();
-
-            $rootScope.owners.push(jQuery.extend({}, $scope.owner));
-
-            $scope.selectedOwner = $scope.owner.primaryKey;
-        } else {
-            var oldOwner = findOwnerByKey($scope.owner.primaryKey);
-            oldOwner.name = $scope.owner.name;
-            oldOwner.default = $scope.owner.default;
-        }
+        $scope.selectedOwner = $scope.workOwner.primaryKey;
 
         if ($scope.owner.current) {
-            $rootScope.current_owner = jQuery.extend({}, $scope.owner);
+            $rootScope.current_owner = jQuery.extend({}, $scope.workOwner);
         }
-    }
-
-    function findOwnerByKey(primaryKey) {
-        var result;
-        for (var i = 0; i < $rootScope.owners.length; i++) {
-            if ($rootScope.owners[i].primaryKey === primaryKey) {
-                result = $rootScope.owners[i];
-            }
-        }
-        return result;
     }
 });

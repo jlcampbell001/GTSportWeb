@@ -1,7 +1,12 @@
 ﻿var app = angular.module('gtsportApp', ['ngRoute',
     'ngResource']).run(function ($http, $rootScope) {
-    $rootScope.current_owner = { primaryKey: 'OWN9000000001', name: 'Owner 1', default: true, current: true };
+        // BackEndTemp - remove all the initialize code one I link the backend
+        initializeOwners($rootScope);
+        initializeRegions($rootScope);
 
+        var defaultOwner = getDefaultOwner();
+
+        setCurrentOwner('', defaultOwner.primaryKey);
 });
 
 app.config(function ($routeProvider) {
@@ -9,6 +14,10 @@ app.config(function ($routeProvider) {
         .when('/', {
             templateUrl: 'ownedcars.html',
             controller: 'ownedcarsController'
+        })
+        .when('/regions', {
+            templateUrl: 'regions.html',
+            controller: 'regionsController'
         })
         .when('/owners', {
             templateUrl: 'owners.html',

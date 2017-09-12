@@ -9,7 +9,10 @@
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.6/angular-resource.js"></script>
     <script src="http://ajax.aspnetcdn.com/ajax/jQuery/jquery-3.1.1.min.js"></script> 
     <script src="/javascripts/gtsportApp.js"></script>
+    <script src="/javascripts/owners.api.js"></script>
     <script src="/javascripts/owners.controller.js"></script>
+    <script src="/javascripts/regions.api.js"></script>
+    <script src="/javascripts/regions.controller.js"></script>
     <link rel="stylesheet" href="stylesheets/gtsportstyle.css">
 </head>
 <body ng-app="gtsportApp">
@@ -20,8 +23,8 @@
                 <a class="navbar-brand" href="#"> Cars </a>
                 <a class="navbar-brand" href="#/owners"> Owners </a>
                 <a class="navbar-brand" href="#"> Dealers </a>
-                <a class="navbar-brand" href="#"> Regions </a>
                 <a class="navbar-brand" href="#"> Countries </a>
+                <a class="navbar-brand" href="#/regions"> Regions </a>
                 <p class="navbar-right navbar-text">Owner: {{current_owner.name}}</p>
             </div>
         </nav>
