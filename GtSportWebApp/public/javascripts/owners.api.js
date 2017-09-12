@@ -12,7 +12,7 @@ var ownersRootScope;
 // BackEndTemp - remove this function once linked to the backend.
 function initializeOwners($rootScope) {
     ownersRootScope = $rootScope;
-    ownersRootScope.owners = [new owner('OWN9000000001', 'Owner 1', true, false),
+    ownersRootScope.ownersData = [new owner('OWN9000000001', 'Owner 1', true, false),
         new owner('OWN9000000002', 'Owner 2', false, false),
         new owner('OWN9000000003', 'Owner 3', false, false)];
 }
@@ -22,9 +22,9 @@ function initializeOwners($rootScope) {
 */
 function getDefaultOwner() {
     var result;
-    for (var i = 0; i < ownersRootScope.owners.length; i++) {
-        if (ownersRootScope.owners[i].defaultOwner) {
-            result = ownersRootScope.owners[i];
+    for (var i = 0; i < ownersRootScope.ownersData.length; i++) {
+        if (ownersRootScope.ownersData[i].defaultOwner) {
+            result = ownersRootScope.ownersData[i];
         }
     }
     return result;
@@ -35,8 +35,8 @@ function getDefaultOwner() {
 */
 function setCurrentOwner(oldOwnerKey, newOwnerKey) {
     if (typeof oldOwnerKey === 'undefined' || oldOwnerKey === '') {
-        for (var i = 0; i < ownersRootScope.owners.length; i++) {
-            ownersRootScope.owners[i].current = false;
+        for (var i = 0; i < ownersRootScope.ownersData.length; i++) {
+            ownersRootScope.ownersData[i].current = false;
         }
     } else {
         var oldOwner = findOwnerByKey(oldOwnerKey);
@@ -50,13 +50,26 @@ function setCurrentOwner(oldOwnerKey, newOwnerKey) {
 }
 
 /*
+Get a list of all the owners.
+*/
+function getAllOwners() {
+    var result = [];
+
+    for (var i = 0; i < ownersRootScope.ownersData.length; i++) {
+        result.push(jQuery.extend({}, ownersRootScope.ownersData[i]));
+    }
+
+    return result;
+}
+
+/*
  Looks for the owner by the primary key.
 */
 function findOwnerByKey(primaryKey) {
     var result;
-    for (var i = 0; i < ownersRootScope.owners.length; i++) {
-        if (ownersRootScope.owners[i].primaryKey === primaryKey) {
-            result = ownersRootScope.owners[i];
+    for (var i = 0; i < ownersRootScope.ownersData.length; i++) {
+        if (ownersRootScope.ownersData[i].primaryKey === primaryKey) {
+            result = ownersRootScope.ownersData[i];
         }
     }
     return result;
@@ -66,9 +79,9 @@ function findOwnerByKey(primaryKey) {
  Delete the owner for the passed primary key.
 */
 function deleteOwner(primaryKey) {
-    for (var i = 0; i < ownersRootScope.owners.length; i++) {
-        if (primaryKey === ownersRootScope.owners[i].primaryKey) {
-            ownersRootScope.owners.splice(i, 1);
+    for (var i = 0; i < ownersRootScope.ownersData.length; i++) {
+        if (primaryKey === ownersRootScope.ownersData[i].primaryKey) {
+            ownersRootScope.ownersData.splice(i, 1);
         }
     }
 }
@@ -81,7 +94,7 @@ function saveOwner(owner) {
     if (owner.primaryKey === "") {
         owner.primaryKey = getNextOwnerKey();
 
-        ownersRootScope.owners.push(jQuery.extend({}, owner));
+        ownersRootScope.ownersData.push(jQuery.extend({}, owner));
 
     } else {
         var oldOwner = findOwnerByKey(owner.primaryKey);
@@ -92,7 +105,7 @@ function saveOwner(owner) {
 
 // BackEndTemp - remove this function once the link to the backend is done
 function getNextOwnerKey() {
-    var lastOwnerNumber = ownersRootScope.owners.length;
+    var lastOwnerNumber = ownersRootScope.ownersData.length;
 
     var result = "OWN000000000" + lastOwnerNumber.toString();
 

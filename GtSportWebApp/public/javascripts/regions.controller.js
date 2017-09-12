@@ -12,9 +12,12 @@
     // Currently selected region in the select object.
     $scope.selectedRegion = $scope.newRegion.primaryKey;
 
+    // List of all the regions.
+    $scope.regions = getAllRegions();
+    
     // Sets the region list to a min size or max size.
     $scope.setRegionListSize = function () {
-        var listSize = $rootScope.regions.length + 1;
+        var listSize = $scope.regions.length + 1;
 
         if (listSize < minRegionListSize) {
             listSize = minRegionListSize;
@@ -52,6 +55,7 @@
     $scope.regionDelete = function () {
         deleteRegion($scope.workRegion.primaryKey);
 
+        $scope.regions = getAllRegions();
         $scope.selectedRegion = "";
         $scope.regionSelect();
     }
@@ -60,6 +64,7 @@
     $scope.regionSubmit = function () {
         saveRegion($scope.workRegion);
 
+        $scope.regions = getAllRegions();
         $scope.selectedRegion = $scope.workRegion.primaryKey;
     }
 

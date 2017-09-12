@@ -12,6 +12,9 @@
     // The owner that has been selected in the owner select object.
     $scope.selectedOwner = $scope.newOwner.primaryKey;
 
+    // List of all the owners.
+    $scope.owners = getAllOwners();
+
     // Creates an owner name to be shown in the owner select list.
     $scope.getOwnerSelectName = function (owner) {
         var selectName = owner.name;
@@ -32,7 +35,7 @@
 
     // Sets the min or max size of the owner select list.
     $scope.setOwnerListSize = function () {
-        var listSize = $rootScope.owners.length + 1;
+        var listSize = $scope.owners.length + 1;
 
         if (listSize < minOwnerListSize) {
             listSize = minOwnerListSize;
@@ -89,12 +92,15 @@
         setCurrentOwner($rootScope.current_owner.primaryKey, $scope.workOwner.primaryKey);
 
         $scope.owner = jQuery.extend({}, $rootScope.current_owner);
+        $scope.owners = getAllOwners();
+        $scope.selectedOwner = $scope.workOwner.primaryKey;
     }
 
     // Deletes the owner.
     $scope.ownerDelete = function () {
         deleteOwner($scope.workOwner.primaryKey);
 
+        $scope.owners = getAllOwners();
         $scope.selectedOwner = "";
         $scope.ownerSelect();
     }
@@ -103,6 +109,7 @@
     $scope.ownerSubmit = function () {
         saveOwner($scope.workOwner);
 
+        $scope.owners = getAllOwners();
         $scope.selectedOwner = $scope.workOwner.primaryKey;
 
         if ($scope.owner.current) {
