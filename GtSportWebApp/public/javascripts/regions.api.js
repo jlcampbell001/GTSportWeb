@@ -11,8 +11,9 @@ var regionsRootScope;
 function initializeRegions($rootScope) {
     regionsRootScope = $rootScope;
     regionsRootScope.regionsData = [new region('REG000000001', 'North America'),
-        new region('REG000000002', 'Asia'),
+        new region('REG000000002', 'Asia-Pacific'),
         new region('REG000000003', 'Europe')];
+    regionsRootScope.lastRegionNumber = 3;
 }
 
 /*
@@ -72,9 +73,9 @@ function saveRegion(region) {
 
 // BackEndTemp - remove this function once the link to the backend is done
 function getNextRegionKey() {
-    var lastRegionNumber = regionsRootScope.regionsData.length;
+    regionsRootScope.lastRegionNumber++;
 
-    var result = "REG000000000" + lastRegionNumber.toString();
+    var result = "REG000000000" + regionsRootScope.lastRegionNumber.toString();
 
     return result;
 }

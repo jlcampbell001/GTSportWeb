@@ -1,0 +1,23 @@
+﻿<div class="gtsportWorkArea">
+    <form ng-submit="countrySubmit()">
+        <div id="countriesList" class="gtsportListBox">
+            <select ng-model="selectedCountry" ng-attr-size="{{setCountryListSize()}}" ng-change="countrySelect()">
+                <option value="{{newCountry.primaryKey}}">{{newCountry.description}}</option>
+                <option value={{listCountry.primaryKey}} ng-repeat="listCountry in countries | orderBy: 'description'">
+                    {{listCountry.description}}
+                </option>
+            </select>
+        </div>
+        <div id="countrySection" class="gtsportUserArea">
+            <input type="text" name="countryDescription" ng-model="workCountry.description" placeholder="Description" required /><br />
+            <span>Region: </span>
+            <select ng-model="workCountry.regionKey" required>
+                <option value="{{listRegion.primaryKey}}" ng-repeat="listRegion in regions | orderBy: 'description'">
+                    {{listRegion.description}}
+                </option>
+            </select><br />
+            <input type="submit" name="countrySubmit" value="Submit" />
+            <input type="button" name="countryDelete" value="Delete" ng-click="countryDelete()" ng-show="countryAllowDelete()" />
+        </div>
+    </form>
+</div>

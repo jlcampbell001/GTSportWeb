@@ -15,6 +15,7 @@ function initializeOwners($rootScope) {
     ownersRootScope.ownersData = [new owner('OWN9000000001', 'Owner 1', true, false),
         new owner('OWN9000000002', 'Owner 2', false, false),
         new owner('OWN9000000003', 'Owner 3', false, false)];
+    ownersRootScope.lastOwnerNumber = 3;
 }
 
 /*
@@ -105,9 +106,9 @@ function saveOwner(owner) {
 
 // BackEndTemp - remove this function once the link to the backend is done
 function getNextOwnerKey() {
-    var lastOwnerNumber = ownersRootScope.ownersData.length;
+    ownersRootScope.lastOwnerNumber++;
 
-    var result = "OWN000000000" + lastOwnerNumber.toString();
+    var result = "OWN000000000" + ownersRootScope.lastOwnerNumber.toString();
 
     return result;
 }

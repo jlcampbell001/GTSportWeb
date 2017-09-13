@@ -13,6 +13,12 @@
     <script src="/javascripts/owners.controller.js"></script>
     <script src="/javascripts/regions.api.js"></script>
     <script src="/javascripts/regions.controller.js"></script>
+    <script src="/javascripts/countries.api.js"></script>
+    <script src="/javascripts/countries.controller.js"></script>
+    <script src="/javascripts/dealers.api.js"></script>
+    <script src="/javascripts/dealers.controller.js"></script>
+    <script src="/javascripts/cars.api.js"></script>
+    <script src="/javascripts/cars.controller.js"></script>
     <link rel="stylesheet" href="stylesheets/gtsportstyle.css">
 </head>
 <body ng-app="gtsportApp">
@@ -20,10 +26,10 @@
         <nav class="navbar-fluid navbar-default navbar-fixed-top">
             <div class="container">
                 <a class="navbar-brand" href="#/"> Owned Cars </a>
-                <a class="navbar-brand" href="#"> Cars </a>
+                <a class="navbar-brand" href="#/cars"> Cars </a>
                 <a class="navbar-brand" href="#/owners"> Owners </a>
-                <a class="navbar-brand" href="#"> Dealers </a>
-                <a class="navbar-brand" href="#"> Countries </a>
+                <a class="navbar-brand" href="#/dealers"> Dealers </a>
+                <a class="navbar-brand" href="#/countries"> Countries </a>
                 <a class="navbar-brand" href="#/regions"> Regions </a>
                 <p class="navbar-right navbar-text">Owner: {{current_owner.name}}</p>
             </div>

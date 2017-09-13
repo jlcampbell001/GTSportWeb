@@ -3,6 +3,9 @@
         // BackEndTemp - remove all the initialize code one I link the backend
         initializeOwners($rootScope);
         initializeRegions($rootScope);
+        initializeCountries($rootScope);
+        initializeDealers($rootScope);
+        initializeCars($rootScope);
 
         var defaultOwner = getDefaultOwner();
 
@@ -18,6 +21,18 @@ app.config(function ($routeProvider) {
         .when('/regions', {
             templateUrl: 'regions.html',
             controller: 'regionsController'
+        })
+        .when('/countries', {
+            templateUrl: 'countries.html',
+            controller: 'countriesController'
+        })
+        .when('/dealers', {
+            templateUrl: 'dealers.html',
+            controller: 'dealersController'
+        })
+        .when('/cars', {
+            templateUrl: 'cars.html',
+            controller: 'carsController'
         })
         .when('/owners', {
             templateUrl: 'owners.html',

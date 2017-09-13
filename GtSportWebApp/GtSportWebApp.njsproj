@@ -31,6 +31,12 @@
   </PropertyGroup>
   <ItemGroup>
     <Compile Include="app.js" />
+    <Compile Include="public\javascripts\cars.api.js" />
+    <Compile Include="public\javascripts\cars.controller.js" />
+    <Compile Include="public\javascripts\countries.api.js" />
+    <Compile Include="public\javascripts\countries.controller.js" />
+    <Compile Include="public\javascripts\dealers.api.js" />
+    <Compile Include="public\javascripts\dealers.controller.js" />
     <Compile Include="public\javascripts\gtsportApp.js" />
     <Compile Include="public\javascripts\owners.api.js" />
     <Compile Include="public\javascripts\owners.controller.js" />
@@ -40,6 +46,9 @@
     <Compile Include="routes\users.js" />
     <Compile Include="bin\www" />
     <Content Include="package.json" />
+    <Content Include="public\cars.html" />
+    <Content Include="public\countries.html" />
+    <Content Include="public\dealers.html" />
     <Content Include="public\ownedcars.html" />
     <Content Include="public\owners.html" />
     <Content Include="public\index.html" />
