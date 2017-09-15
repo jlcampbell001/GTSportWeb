@@ -1,7 +1,7 @@
 ﻿app.controller('ownersController', function ($scope, $rootScope) {
     var blankOwner = new owner('', '', false, false);
 
-    var minOwnerListSize = 5;
+    var minOwnerListSize = 6;
     var maxOwnerListSize = 20;
 
     $scope.newOwner = new owner('', '--New Owner--', false, false);

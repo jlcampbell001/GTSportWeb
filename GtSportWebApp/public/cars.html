@@ -1,7 +1,7 @@
 ﻿<div class="gtsportWorkArea">
-    <form ng-submit="carSubmit()">
-        <div id="carsList" class="gtsportListBox">
-            <select ng-model="selectedCar" ng-attr-size="{{setCarListSize()}}" ng-change="carSelect()">
+    <form ng-submit="carSubmit()" class="form-horizontal">
+        <div id="carsList" class="form-group gtsportListBox">
+            <select ng-model="selectedCar" ng-attr-size="{{setCarListSize()}}" ng-change="carSelect()" class="form-control">
                 <option value="{{newCar.primaryKey}}">{{newCar.name}}</option>
                 <option value={{listCar.primaryKey}} ng-repeat="listCar in cars | orderBy: 'name'">
                     {{listCar.name}}
@@ -9,15 +9,15 @@
             </select>
         </div>
         <div id="carSection" class="gtsportUserArea">
-            <input type="text" name="carName" ng-model="workCar.name" placeholder="Name" required /><br />
-            <span>Dealer: </span>
-            <select ng-model="workCar.dealerKey" required>
+            <input type="text" name="carName" ng-model="workCar.name" placeholder="Name" class="form-control" required />
+            <label class="control-label">Dealer: </label>
+            <select ng-model="workCar.dealerKey" class="form-control" required>
                 <option value="{{listDealer.primaryKey}}" ng-repeat="listDealer in dealers | orderBy: 'name'">
                     {{listDealer.name}}
                 </option>
-            </select><br />
-            <input type="submit" name="carSubmit" value="Submit" />
-            <input type="button" name="carDelete" value="Delete" ng-click="carDelete()" ng-show="carAllowDelete()" />
+            </select>
+            <input type="submit" name="carSubmit" value="Submit" class="btn btn-primary"/>
+            <input type="button" name="carDelete" value="Delete" ng-click="carDelete()" ng-show="carAllowDelete()" class="btn btn-danger"/>
         </div>
     </form>
     <br />

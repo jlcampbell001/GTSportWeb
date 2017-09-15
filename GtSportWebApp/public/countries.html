@@ -1,7 +1,7 @@
 ﻿<div class="gtsportWorkArea">
-    <form ng-submit="countrySubmit()">
-        <div id="countriesList" class="gtsportListBox">
-            <select ng-model="selectedCountry" ng-attr-size="{{setCountryListSize()}}" ng-change="countrySelect()">
+    <form ng-submit="countrySubmit()" class="form-horizontal">
+        <div id="countriesList" class="form-group gtsportListBox">
+            <select ng-model="selectedCountry" ng-attr-size="{{setCountryListSize()}}" ng-change="countrySelect()" class="form-control">
                 <option value="{{newCountry.primaryKey}}">{{newCountry.description}}</option>
                 <option value={{listCountry.primaryKey}} ng-repeat="listCountry in countries | orderBy: 'description'">
                     {{listCountry.description}}
@@ -9,15 +9,15 @@
             </select>
         </div>
         <div id="countrySection" class="gtsportUserArea">
-            <input type="text" name="countryDescription" ng-model="workCountry.description" placeholder="Description" required /><br />
-            <span>Region: </span>
-            <select ng-model="workCountry.regionKey" required>
+            <input type="text" name="countryDescription" ng-model="workCountry.description" placeholder="Description" class="form-control" required/>
+            <label class="control-label">Region: </label>
+            <select ng-model="workCountry.regionKey" class="form-control" required>
                 <option value="{{listRegion.primaryKey}}" ng-repeat="listRegion in regions | orderBy: 'description'">
                     {{listRegion.description}}
                 </option>
-            </select><br />
-            <input type="submit" name="countrySubmit" value="Submit" />
-            <input type="button" name="countryDelete" value="Delete" ng-click="countryDelete()" ng-show="countryAllowDelete()" />
+            </select>
+            <input type="submit" name="countrySubmit" value="Submit" class="btn btn-primary"/>
+            <input type="button" name="countryDelete" value="Delete" ng-click="countryDelete()" ng-show="countryAllowDelete()" class="btn btn-danger"/>
         </div>
     </form>
 </div>

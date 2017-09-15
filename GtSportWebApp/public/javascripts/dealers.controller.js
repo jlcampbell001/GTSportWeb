@@ -1,7 +1,7 @@
 ﻿app.controller('dealersController', function ($scope, $rootScope) {
     var blankDealer = new dealer('', '', '');
 
-    var minDealerListSize = 6;
+    var minDealerListSize = 10;
     var maxDealerListSize = 20;
 
     $scope.newDealer = new dealer('', '--New Dealer--', '');

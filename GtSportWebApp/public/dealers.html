@@ -1,7 +1,7 @@
 ﻿<div class="gtsportWorkArea">
-    <form ng-submit="dealerSubmit()">
-        <div id="dealersList" class="gtsportListBox">
-            <select ng-model="selectedDealer" ng-attr-size="{{setDealerListSize()}}" ng-change="dealerSelect()">
+    <form ng-submit="dealerSubmit()" class="form-horizontal">
+        <div id="dealersList" class="form-group gtsportListBox">
+            <select ng-model="selectedDealer" ng-attr-size="{{setDealerListSize()}}" ng-change="dealerSelect()" class="form-control">
                 <option value="{{newDealer.primaryKey}}">{{newDealer.name}}</option>
                 <option value={{listDealer.primaryKey}} ng-repeat="listDealer in dealers | orderBy: 'name'">
                     {{listDealer.name}}
@@ -9,15 +9,15 @@
             </select>
         </div>
         <div id="dealerSection" class="gtsportUserArea">
-            <input type="text" name="dealerName" ng-model="workDealer.name" placeholder="Name" required /><br />
-            <span>Country: </span>
-            <select ng-model="workDealer.countryKey" required>
+            <input type="text" name="dealerName" ng-model="workDealer.name" placeholder="Name" class="form-control" required />
+            <label class="control-label">Country: </label>
+            <select ng-model="workDealer.countryKey" class="form-control" required>
                 <option value="{{listCountry.primaryKey}}" ng-repeat="listCountry in countries | orderBy: 'description'">
                     {{listCountry.description}}
                 </option>
-            </select><br />
-            <input type="submit" name="dealerSubmit" value="Submit" />
-            <input type="button" name="dealerDelete" value="Delete" ng-click="dealerDelete()" ng-show="dealerAllowDelete()" />
+            </select>
+            <input type="submit" name="dealerSubmit" value="Submit" class="btn btn-primary"/>
+            <input type="button" name="dealerDelete" value="Delete" ng-click="dealerDelete()" ng-show="dealerAllowDelete()" class="btn btn-danger"/>
         </div>
     </form>
 </div>

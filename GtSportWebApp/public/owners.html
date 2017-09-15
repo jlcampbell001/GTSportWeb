@@ -1,7 +1,7 @@
 ﻿<div class="gtsportWorkArea">
-    <form ng-submit="ownerSubmit()">
-        <div id="ownerList" class="gtsportListBox">
-            <select ng-model="selectedOwner" ng-attr-size="{{setOwnerListSize()}}" ng-change="ownerSelect()">
+    <form ng-submit="ownerSubmit()" class="form-horizontal">
+        <div id="ownerList" class="form-group gtsportListBox">
+            <select ng-model="selectedOwner" ng-attr-size="{{setOwnerListSize()}}" ng-change="ownerSelect()" class="form-control">
                 <option value="{{newOwner.primaryKey}}">{{newOwner.name}}</option>
                 <option value={{listOwner.primaryKey}} ng-repeat="listOwner in owners | orderBy: 'name'">
                     {{getOwnerSelectName(listOwner)}}
@@ -9,12 +9,12 @@
             </select>
         </div>
         <div id="ownerSection" class="gtsportUserArea">
-            <input type="text" name="ownerName" ng-model="workOwner.name" placeholder="Name" required />
-            <span class="currentOwnerListItem" ng-show="workOwner.current">  Currently Set Owner</span><br />
-            <input type="checkbox" name="ownerDefault" ng-model="workOwner.defaultOwner" /> Default Start Owner<br />
-            <input type="submit" name="ownerSubmit" value="Submit" />
-            <input type="button" name="ownerDelete" value="Delete" ng-click="ownerDelete()" ng-show="ownerAllowDelete()" />
-            <input type="button" name="ownerSetCurrent" value="Set to Current" ng-click="ownerSetCurrent()" ng-show="ownerAllowSetToCurrent()" />
+            <span ng-show="workOwner.current" class="currentOwnerListItem">  Currently Set Owner</span>
+            <input type="text" name="ownerName" ng-model="workOwner.name" placeholder="Name" class="form-control" required />
+            <label class="control-label"><input type="checkbox" name="ownerDefault" ng-model="workOwner.defaultOwner" /> Default Start Owner</label><br />
+            <input type="submit" name="ownerSubmit" value="Submit" class="btn btn-primary"/>
+            <input type="button" name="ownerDelete" value="Delete" ng-click="ownerDelete()" ng-show="ownerAllowDelete()" class="btn btn-danger"/>
+            <input type="button" name="ownerSetCurrent" value="Set to Current" ng-click="ownerSetCurrent()" ng-show="ownerAllowSetToCurrent()" class="btn"/>
         </div>
     </form>
 </div>

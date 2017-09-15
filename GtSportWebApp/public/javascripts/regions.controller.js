@@ -1,7 +1,7 @@
 ﻿app.controller('regionsController', function ($scope, $rootScope) {
     var blankRegion = new region('', '');
 
-    var minRegionListSize = 3;
+    var minRegionListSize = 6;
     var maxRegionListSize = 20;
 
     $scope.newRegion = new region('', '--New Region--');

@@ -119,7 +119,6 @@ button, input, optgroup, select, textarea {
     color: inherit;
     font: inherit;
     margin: 0;
-    margin-bottom: 3px;
 }
 
 button {
@@ -2952,6 +2951,7 @@ output {
     -webkit-transition: border-color ease-in-out .15s,-webkit-box-shadow ease-in-out .15s;
     -o-transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
     transition: border-color ease-in-out .15s,box-shadow ease-in-out .15s;
+    margin-bottom: 3px;
 }
 
     .form-control:focus {

@@ -1,7 +1,7 @@
 ﻿app.controller('countriesController', function ($scope, $rootScope) {
     var blankCountry = new country('', '', '');
 
-    var minCountryListSize = 6;
+    var minCountryListSize = 10;
     var maxCountryListSize = 20;
 
     $scope.newCountry = new country('', '--New Country--', '');

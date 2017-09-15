@@ -1,7 +1,7 @@
 ﻿<div class="gtsportWorkArea">
-    <form ng-submit="regionSubmit()">
-        <div id="regionsList" class="gtsportListBox">
-            <select ng-model="selectedRegion" ng-attr-size="{{setRegionListSize()}}" ng-change="regionSelect()">
+    <form ng-submit="regionSubmit()" class="form-horizontal">
+        <div id="regionsList" class="form-group gtsportListBox">
+            <select ng-model="selectedRegion" ng-attr-size="{{setRegionListSize()}}" ng-change="regionSelect()" class="form-control">
                 <option value="{{newRegion.primaryKey}}">{{newRegion.description}}</option>
                 <option value={{listRegion.primaryKey}} ng-repeat="listRegion in regions | orderBy: 'description'">
                     {{listRegion.description}}
@@ -9,9 +9,9 @@
             </select>
         </div>
         <div id="regionSection" class="gtsportUserArea">
-            <input type="text" name="regionDescription" ng-model="workRegion.description" placeholder="Description" required /><br />
-            <input type="submit" name="regionSubmit" value="Submit" />
-            <input type="button" name="regionDelete" value="Delete" ng-click="regionDelete()" ng-show="regionAllowDelete()"/>
+            <input type="text" name="regionDescription" ng-model="workRegion.description" placeholder="Description" class="form-control" required />
+            <input type="submit" name="regionSubmit" value="Submit" class="btn btn-primary"/>
+            <input type="button" name="regionDelete" value="Delete" ng-click="regionDelete()" ng-show="regionAllowDelete()" class="btn btn-danger"/>
         </div>
     </form>
 </div>
