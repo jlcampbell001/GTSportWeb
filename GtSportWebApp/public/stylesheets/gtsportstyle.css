@@ -7591,10 +7591,9 @@ input[type="radio"], input[type="checkbox"] {
     column-count: 2;
 }
 .gtsportListBox {
-//    border-style: solid;
     border-right: 1px solid gray;
     float: left;
-    max-width: 360px;
+    max-width: 170px;
     margin: 0;
     padding-right: 1em;
 }
@@ -7605,11 +7604,17 @@ input[type="radio"], input[type="checkbox"] {
 }
 .gtsportUserArea {
     border-style:inset;
-    margin-left: 170px;
+    margin-left: 180px;
     padding: 1em;
     overflow: hidden;
 }
 .currentOwnerListItem {
     color: blue; 
     font-weight: bold;
+}
+.carsListBox {
+    max-width: 300px;
+}
+.carsUserArea {
+    margin-left: 310px;
 }

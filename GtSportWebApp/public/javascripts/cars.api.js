@@ -45,7 +45,8 @@ function initializeCars($rootScope) {
         new car('CAR000000008', "Formula Gran Turismo", 'DEA000000010', 0, 8, 880,
         2000000.00, '', 891, '17500', 289.30, '15500', 'MR', 'NA', 0.00, 0.00, 0.00, 550),
         new car('CAR000000009', "Tomahawk X Vision Gran Turismo", 'DEA000000011', 2035, 9, 962,
-        1000000.00, '7000', 2586, '13800', 898.50, '11300', '4WD', 'NA', 0.00, 0.00, 0.00, 749)];
+            1000000.00, '7000', 2586, '13800', 898.50, '11300', '4WD', 'NA', 0.00, 0.00, 0.00, 749)];
+    
     carsRootScope.lastCarNumber = 9;
 }
 
@@ -57,6 +58,21 @@ function getAllCars() {
 
     for (var i = 0; i < carsRootScope.carsData.length; i++) {
         result.push(jQuery.extend({}, carsRootScope.carsData[i]));
+    }
+
+    return result;
+}
+
+/*
+Looks for a car by the passed primary key.
+*/
+function findCarByKey(primaryKey) {
+    var result;
+
+    for (var i = 0; i < carsRootScope.carsData.length; i++) {
+        if (carsRootScope.carsData[i].primaryKey === primaryKey) {
+            result = carsRootScope.carsData[i];
+        }
     }
 
     return result;

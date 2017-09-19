@@ -1,6 +1,6 @@
-﻿<div class="gtsportWorkArea">
+﻿<div name="carsWorkArea" class="gtsportWorkArea">
     <form ng-submit="carSubmit()" class="form-horizontal">
-        <div id="carsList" class="form-group gtsportListBox">
+        <div id="carsList" class="form-group gtsportListBox carsListBox">
             <select ng-model="selectedCar" ng-attr-size="{{setCarListSize()}}" ng-change="carSelect()" class="form-control">
                 <option value="{{newCar.primaryKey}}">{{newCar.name}}</option>
                 <option value={{listCar.primaryKey}} ng-repeat="listCar in cars | orderBy: 'name'">
@@ -8,18 +8,110 @@
                 </option>
             </select>
         </div>
-        <div id="carSection" class="gtsportUserArea">
+        <div id="carSection" class="gtsportUserArea carsUserArea">
             <input type="text" name="carName" ng-model="workCar.name" placeholder="Name" class="form-control" required />
-            <label class="control-label">Dealer: </label>
-            <select ng-model="workCar.dealerKey" class="form-control" required>
-                <option value="{{listDealer.primaryKey}}" ng-repeat="listDealer in dealers | orderBy: 'name'">
-                    {{listDealer.name}}
-                </option>
-            </select>
-            <input type="submit" name="carSubmit" value="Submit" class="btn btn-primary"/>
-            <input type="button" name="carDelete" value="Delete" ng-click="carDelete()" ng-show="carAllowDelete()" class="btn btn-danger"/>
+            <label class="control-label col-lg-1">Dealer: </label>
+            <div class="col-lg-11">
+                <select ng-model="workCar.dealerKey" class="form-control" required>
+                    <option value="{{listDealer.primaryKey}}" ng-repeat="listDealer in dealers | orderBy: 'name'">
+                        {{listDealer.name}}
+                    </option>
+                </select>
+            </div>
+            <div class="col-lg-12">
+                <label class="col-lg-1 control-label">Year:</label>
+                <div class="col-lg-2">
+                    <input type="number" name="carYear" ng-model="workCar.year" min="0" max="3000" class="form-control" />
+                </div>
+                <label class="col-lg-1">Price:</label>
+                <div class="col-lg-7">
+                    <input type="number" name="carPrice" ng-model="workCar.price" min="0" class="form-control" />
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <label class="col-lg-1 control-label">Level:</label>
+                <div class="col-lg-2">
+                    <input type="number" name="carLevel" ng-model="workCar.level" min="0" max="11" class="form-control" />
+                </div>
+                <label class="col-lg-1 control-label">Power Points:</label>
+                <div class="col-lg-3">
+                    <input type="number" name="carPowerPoints" ng-model="workCar.powerPoints" min="0" max="1100" class="form-control" />
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <label class="col-lg-1 control-label">Displ. CC:</label>
+                <div class="col-lg-3">
+                    <input type="text" name="carDisplacementCC" ng-model="workCar.displacementCC" class="form-control" />
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <label class="col-lg-1 control-label">Horse Power:</label>
+                <div class="col-lg-2">
+                    <input type="number" name="carHorsePower" ng-model="workCar.horsePower" min="0" class="form-control" />
+                </div>
+                <label class="col-lg-1 control-label">Power RPM:</label>
+                <div class="col-lg-3">
+                    <input type="text" name="carPowerRPM" ng-model="workCar.powerRPM" class="form-control" />
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <label class="col-lg-1 control-label">Torque FTLB:</label>
+                <div class="col-lg-3">
+                    <input type="number" name="carTorqueFTLB" ng-model="workCar.torqueFTLB" min="0" class="form-control" />
+                </div>
+                <label class="col-lg-1 control-label">Torque RPM:</label>
+                <div class="col-lg-3">
+                    <input type="text" name="carTorqueRPM" ng-model="workCar.torqueRPM" class="form-control" />
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <label class="col-lg-1 control-label">Drive Train:</label>
+                <div class="col-lg-4">
+                    <select ng-model="workCar.driveTrain" class="form-control">
+                        <option value="" ></option>
+                        <option value="4WD">4WD</option>
+                        <option value="FF">FF</option>
+                        <option value="FR">FR</option>
+                        <option value="MR">MR</option>
+                        <option value="RR">RR</option>
+                    </select>
+                </div>
+                <label class="col-lg-1 control-label">Aspiration:</label>
+                <div class="col-lg-4">
+                    <select ng-model="workCar.aspiration" class="form-control">
+                        <option value=""></option>
+                        <option value="NA">NA</option>
+                        <option value="T">T</option>
+                        <option value="SC">SC</option>
+                        <option value="EV">EV</option>
+                    </select>
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <label class="col-lg-1 control-label">Length:</label>
+                <div class="col-lg-3">
+                    <input type="number" name="carLength" ng-model="workCar.length" min="0" class="form-control" />
+                </div>
+                <label class="col-lg-1 control-label">Width:</label>
+                <div class="col-lg-3">
+                    <input type="number" name="carWidth" ng-model="workCar.width" min="0" class="form-control" />
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <label class="col-lg-1 control-label">Height:</label>
+                <div class="col-lg-3">
+                    <input type="number" name="carHeight" ng-model="workCar.height" min="0" class="form-control" />
+                </div>
+                <label class="col-lg-1 control-label">Weight:</label>
+                <div class="col-lg-3">
+                    <input type="number" name="carWeight" ng-model="workCar.weight" min="0" class="form-control" />
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <input type="submit" name="carSubmit" value="Submit" class="btn btn-primary" />
+                <input type="button" name="carDelete" value="Delete" ng-click="carDelete()" ng-show="carAllowDelete()" class="btn btn-danger" />
+            </div>
         </div>
     </form>
     <br />
-    {{cars}}
 </div>

@@ -32,7 +32,7 @@
         return listSize;
     }
 
-    // Selecting a dealer in the country select list.
+    // Selecting a dealer in the dealer select list.
     $scope.dealerSelect = function () {
         var primaryKey = $scope.selectedDealer;
 
