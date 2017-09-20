@@ -1,13 +1,11 @@
 ﻿app.controller('regionsController', function ($scope, $rootScope) {
     var blankRegion = new region('', '');
 
-    $scope.newRegion = new region('', '--New Region--');
-
     // The region that the user is currently working on.
     $scope.workRegion = new region('', '');
 
     // Currently selected region in the select object.
-    $scope.selectedRegion = $scope.newRegion.primaryKey;
+    $scope.selectedRegion = blankRegion.primaryKey;
 
     // List of all the regions.
     $scope.regions = getAllRegions();
@@ -40,7 +38,7 @@
 
         $scope.regions = getAllRegions();
         $scope.selectedRegion = "";
-        $scope.regionSelect();
+        $scope.regionSelect('');
     }
 
     // Save a new or update a selected region.

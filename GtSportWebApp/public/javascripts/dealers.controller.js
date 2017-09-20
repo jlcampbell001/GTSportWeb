@@ -1,13 +1,11 @@
 ﻿app.controller('dealersController', function ($scope, $rootScope) {
     var blankDealer = new dealer('', '', '');
 
-    $scope.newDealer = new dealer('', '--New Dealer--', '');
-
     // The dealer the user is currently working on.
     $scope.workDealer = new dealer('', '', '');
 
     // Currently selected dealer in the dealer select list.
-    $scope.selectedDealer = $scope.newDealer.primaryKey;
+    $scope.selectedDealer = blankDealer.primaryKey;
 
     // List of all the dealers.
     $scope.dealers = getAllDealers();

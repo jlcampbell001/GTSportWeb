@@ -1,34 +1,14 @@
 ﻿app.controller('ownersController', function ($scope, $rootScope) {
     var blankOwner = new owner('', '', false, false);
 
-    $scope.newOwner = new owner('', '--New Owner--', false, false);
-
     // The owner that the user is currently working on.
     $scope.workOwner = new owner('', '', false, false );
 
     // The owner that has been selected in the owner select object.
-    $scope.selectedOwner = $scope.newOwner.primaryKey;
+    $scope.selectedOwner = blankOwner.primaryKey;
 
     // List of all the owners.
     $scope.owners = getAllOwners();
-
-    // Creates an owner name to be shown in the owner select list.
-    $scope.getOwnerSelectName = function (owner) {
-        var selectName = owner.name;
-        var namePrefix = '';
-
-        if (owner.current) {
-            namePrefix = '(C) ';
-        }
-
-        if (owner.defaultOwner) {
-            namePrefix = namePrefix + '(D) ';
-        }
-
-        selectName = namePrefix + selectName;
-
-        return selectName;
-    }
 
     // Selecting an owner in the owner select list.
     $scope.ownerSelect = function (primaryKey) {
@@ -85,7 +65,7 @@
 
         $scope.owners = getAllOwners();
         $scope.selectedOwner = "";
-        $scope.ownerSelect();
+        $scope.ownerSelect('');
     }
 
     // Saves a new or updates an owner.

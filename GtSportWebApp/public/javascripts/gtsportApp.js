@@ -6,6 +6,7 @@
         initializeCountries($rootScope);
         initializeDealers($rootScope);
         initializeCars($rootScope);
+        initializeOwnedCars($rootScope);
 
         var defaultOwner = getDefaultOwner();
 
@@ -39,6 +40,4 @@ app.config(function ($routeProvider) {
             controller: 'ownersController'
         });
 });
-
-app.controller('ownedcarsController', function ($scope, $rootScope) {});
 

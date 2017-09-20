@@ -7630,3 +7630,7 @@ input[type="radio"], input[type="checkbox"] {
     border-bottom-style:groove;
     padding: 1em;
 }
+.ownedCarCount {
+    color: blue; 
+    font-weight: bold;
+}

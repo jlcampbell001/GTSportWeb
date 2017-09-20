@@ -1,13 +1,11 @@
 ﻿app.controller('countriesController', function ($scope, $rootScope) {
     var blankCountry = new country('', '', '');
 
-    $scope.newCountry = new country('', '--New Country--', '');
-
     // The country the user is currently working on.
     $scope.workCountry = new country('', '', '');
 
     // Currently selected country in the counrty select list.
-    $scope.selectedCountry = $scope.newCountry.primaryKey;
+    $scope.selectedCountry = blankCountry.primaryKey;
 
     // List of all the countries.
     $scope.countries = getAllCountries();
@@ -42,7 +40,7 @@
 
         $scope.countries = getAllCountries();
         $scope.selectedCountry = "";
-        $scope.countrySelect();
+        $scope.countrySelect('');
     }
 
     // Save a new or update a selected country.

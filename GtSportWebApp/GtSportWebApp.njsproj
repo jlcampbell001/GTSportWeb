@@ -38,6 +38,8 @@
     <Compile Include="public\javascripts\dealers.api.js" />
     <Compile Include="public\javascripts\dealers.controller.js" />
     <Compile Include="public\javascripts\gtsportApp.js" />
+    <Compile Include="public\javascripts\ownedcars.api.js" />
+    <Compile Include="public\javascripts\ownedcars.controller.js" />
     <Compile Include="public\javascripts\owners.api.js" />
     <Compile Include="public\javascripts\owners.controller.js" />
     <Compile Include="public\javascripts\regions.api.js" />

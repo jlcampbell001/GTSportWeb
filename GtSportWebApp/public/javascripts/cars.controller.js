@@ -1,14 +1,12 @@
 ﻿app.controller('carsController', function ($scope, $rootScope) {
     var blankCar = new car('', '', '', 0, 0, 0, 0.00, '', 0, '', 0.00, '', '', '', 0.00, 0.00, 0.00, 0);
 
-    $scope.newCar = new car('', '--New Car--', '', 0, 0, 0, 0.00, '', 0, '', 0.00, '', '', '', 0.00, 0.00, 0.00, 0);
-
     // The car the user is currently working on.
     $scope.workCar = new car('', '', '', 0, 0, 0, 0.00, '', 0, '', 0.00, '', '', '', 0.00, 0.00, 0.00, 0);
 
     // Currently selected car in the car select list.
-    $scope.selectedCar = $scope.newCar.primaryKey;
-
+    $scope.selectedCar = blankCar.primaryKey;
+    
     // List of all the cars.
     $scope.cars = getAllCars();
 
