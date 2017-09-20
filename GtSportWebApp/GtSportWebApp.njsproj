@@ -53,6 +53,7 @@
     <Content Include="public\owners.html" />
     <Content Include="public\index.html" />
     <Content Include="public\regions.html" />
+    <Content Include="public\stylesheets\angular-material.min.css" />
     <Content Include="README.md" />
     <Content Include="typings.json" />
     <Content Include="views\index.jade" />

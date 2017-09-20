@@ -1,4 +1,6 @@
-﻿// Dealer schema.
+﻿//var router = express.Router();
+
+// Dealer schema.
 function dealer(primaryKey, name, countryKey) {
     this.primaryKey = primaryKey;
     this.name = name;
@@ -89,3 +91,10 @@ function getNextDealerKey() {
 
     return result;
 }
+
+/*
+router.route('/dealers/:id')
+    .get(function (req, res) {
+        findDealerByKey(req.params.id)
+    });
+*/

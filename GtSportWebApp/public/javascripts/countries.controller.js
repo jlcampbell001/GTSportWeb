@@ -1,9 +1,6 @@
 ﻿app.controller('countriesController', function ($scope, $rootScope) {
     var blankCountry = new country('', '', '');
 
-    var minCountryListSize = 10;
-    var maxCountryListSize = 20;
-
     $scope.newCountry = new country('', '--New Country--', '');
 
     // The country the user is currently working on.
@@ -18,29 +15,14 @@
     // List of all the regions.
     $scope.regions = getAllRegions();
 
-    // Sets the country list to a min size or max size.
-    $scope.setCountryListSize = function () {
-        var listSize = $scope.countries.length + 1;
-
-        if (listSize < minCountryListSize) {
-            listSize = minCountryListSize;
-        }
-
-        if (listSize > maxCountryListSize) {
-            listSize = maxCountryListSize;
-        }
-        return listSize;
-    }
-
     // Selecting a country in the country select list.
-    $scope.countrySelect = function () {
-        var primaryKey = $scope.selectedCountry;
-
+    $scope.countrySelect = function (primaryKey) {
         if (primaryKey === '') {
             $scope.workCountry = jQuery.extend({}, blankCountry);
         } else {
             $scope.workCountry = jQuery.extend({}, findCountryByKey(primaryKey));
         }
+        $scope.selectedCountry = primaryKey;
     }
 
     // Check and see if the currently selected country can be deleted.

@@ -7598,9 +7598,10 @@ input[type="radio"], input[type="checkbox"] {
     padding-right: 1em;
 }
 .gtsportList {
-    list-style-type: none;
     margin: 0;
     padding: 0;
+    height: 80vh;
+    overflow-y: scroll;
 }
 .gtsportUserArea {
     border-style:inset;
@@ -7612,9 +7613,20 @@ input[type="radio"], input[type="checkbox"] {
     color: blue; 
     font-weight: bold;
 }
+.defaultOwnerListItem {
+    color: red; 
+    font-weight: bold;
+}
 .carsListBox {
     max-width: 300px;
 }
 .carsUserArea {
     margin-left: 310px;
+}
+.gtsportSelectedItem {
+    background-color: lightgray;
+}
+.gtsportControlArea {
+    border-bottom-style:groove;
+    padding: 1em;
 }

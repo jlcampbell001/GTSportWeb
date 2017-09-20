@@ -1,9 +1,6 @@
 ﻿app.controller('ownersController', function ($scope, $rootScope) {
     var blankOwner = new owner('', '', false, false);
 
-    var minOwnerListSize = 6;
-    var maxOwnerListSize = 20;
-
     $scope.newOwner = new owner('', '--New Owner--', false, false);
 
     // The owner that the user is currently working on.
@@ -33,28 +30,14 @@
         return selectName;
     }
 
-    // Sets the min or max size of the owner select list.
-    $scope.setOwnerListSize = function () {
-        var listSize = $scope.owners.length + 1;
-
-        if (listSize < minOwnerListSize) {
-            listSize = minOwnerListSize;
-        }
-
-        if (listSize > maxOwnerListSize) {
-            listSize = maxOwnerListSize;
-        }
-        return listSize;
-    }
-
     // Selecting an owner in the owner select list.
-    $scope.ownerSelect = function () {
-        var primaryKey = $scope.selectedOwner;
+    $scope.ownerSelect = function (primaryKey) {
         if (primaryKey === "") {
             $scope.workOwner = jQuery.extend({}, blankOwner);
         } else {
             $scope.workOwner = jQuery.extend({}, findOwnerByKey(primaryKey));
         }
+        $scope.selectedOwner = primaryKey;
     }
 
     // Checks to see if the owner the user is working on can be deleted.

@@ -1,12 +1,16 @@
 ﻿<div class="gtsportWorkArea">
     <form ng-submit="dealerSubmit()" class="form-horizontal">
         <div id="dealersList" class="form-group gtsportListBox">
-            <select ng-model="selectedDealer" ng-attr-size="{{setDealerListSize()}}" ng-change="dealerSelect()" class="form-control">
-                <option value="{{newDealer.primaryKey}}">{{newDealer.name}}</option>
-                <option value={{listDealer.primaryKey}} ng-repeat="listDealer in dealers | orderBy: 'name'">
-                    {{listDealer.name}}
-                </option>
-            </select>
+            <div class="gtsportControlArea">
+                <input type="button" name="newDealer" value="New Dealer" class="btn btn-primary" ng-click="dealerSelect('')" />
+            </div>
+            <div class="gtsportList">
+                <md-list>
+                    <md-list-item ng-click="dealerSelect(listDealer.primaryKey)" ng-repeat="listDealer in dealers | orderBy: 'name'">
+                        <p ng-class="{gtsportSelectedItem: selectedDealer===listDealer.primaryKey}">{{listDealer.name}}</p>
+                    </md-list-item>
+                </md-list>
+            </div>
         </div>
         <div id="dealerSection" class="gtsportUserArea">
             <input type="text" name="dealerName" ng-model="workDealer.name" placeholder="Name" class="form-control" required />
@@ -16,8 +20,8 @@
                     {{listCountry.description}}
                 </option>
             </select>
-            <input type="submit" name="dealerSubmit" value="Submit" class="btn btn-primary"/>
-            <input type="button" name="dealerDelete" value="Delete" ng-click="dealerDelete()" ng-show="dealerAllowDelete()" class="btn btn-danger"/>
+            <input type="submit" name="dealerSubmit" value="Submit" class="btn btn-primary" />
+            <input type="button" name="dealerDelete" value="Delete" ng-click="dealerDelete()" ng-show="dealerAllowDelete()" class="btn btn-danger" />
         </div>
     </form>
 </div>

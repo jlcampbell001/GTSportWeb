@@ -1,9 +1,6 @@
 ﻿app.controller('regionsController', function ($scope, $rootScope) {
     var blankRegion = new region('', '');
 
-    var minRegionListSize = 6;
-    var maxRegionListSize = 20;
-
     $scope.newRegion = new region('', '--New Region--');
 
     // The region that the user is currently working on.
@@ -15,29 +12,15 @@
     // List of all the regions.
     $scope.regions = getAllRegions();
     
-    // Sets the region list to a min size or max size.
-    $scope.setRegionListSize = function () {
-        var listSize = $scope.regions.length + 1;
-
-        if (listSize < minRegionListSize) {
-            listSize = minRegionListSize;
-        }
-
-        if (listSize > maxRegionListSize) {
-            listSize = maxRegionListSize;
-        }
-        return listSize;
-    }
-
     // Selecting a region in the region select list.
-    $scope.regionSelect = function () {
-        var primaryKey = $scope.selectedRegion;
-
+    $scope.regionSelect = function (primaryKey) {
         if (primaryKey === '') {
             $scope.workRegion = jQuery.extend({}, blankRegion);
         } else {
             $scope.workRegion = jQuery.extend({}, findRegionByKey(primaryKey));
         }
+
+        $scope.selectedRegion = primaryKey;
     }
 
     // Check and see if the currently selected region can be deleted.

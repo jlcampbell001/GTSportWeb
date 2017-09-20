@@ -1,12 +1,19 @@
 ﻿<div class="gtsportWorkArea">
     <form ng-submit="ownerSubmit()" class="form-horizontal">
         <div id="ownerList" class="form-group gtsportListBox">
-            <select ng-model="selectedOwner" ng-attr-size="{{setOwnerListSize()}}" ng-change="ownerSelect()" class="form-control">
-                <option value="{{newOwner.primaryKey}}">{{newOwner.name}}</option>
-                <option value={{listOwner.primaryKey}} ng-repeat="listOwner in owners | orderBy: 'name'">
-                    {{getOwnerSelectName(listOwner)}}
-                </option>
-            </select>
+            <div class="gtsportControlArea">
+                <input type="button" name="newOwner" value="New Owner" class="btn btn-primary" ng-click="ownerSelect('')" />
+            </div>
+            <div class="gtsportList">
+                <md-list>
+                    <md-list-item ng-click="ownerSelect(listOwner.primaryKey)" ng-repeat="listOwner in owners | orderBy: 'name'">
+                        <p ng-class="{gtsportSelectedItem: selectedOwner===listOwner.primaryKey}">
+                        <span ng-show="listOwner.current" class="currentOwnerListItem">C </span>
+                        <span ng-show="listOwner.defaultOwner" class="defaultOwnerListItem">D </span>
+                        {{listOwner.name}}</p>
+                    </md-list-item>
+                </md-list>
+            </div>
         </div>
         <div id="ownerSection" class="gtsportUserArea">
             <span ng-show="workOwner.current" class="currentOwnerListItem">  Currently Set Owner</span>

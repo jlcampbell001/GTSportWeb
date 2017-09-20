@@ -1,12 +1,16 @@
 ﻿<div class="gtsportWorkArea">
     <form ng-submit="regionSubmit()" class="form-horizontal">
         <div id="regionsList" class="form-group gtsportListBox">
-            <select ng-model="selectedRegion" ng-attr-size="{{setRegionListSize()}}" ng-change="regionSelect()" class="form-control">
-                <option value="{{newRegion.primaryKey}}">{{newRegion.description}}</option>
-                <option value={{listRegion.primaryKey}} ng-repeat="listRegion in regions | orderBy: 'description'">
-                    {{listRegion.description}}
-                </option>
-            </select>
+            <div class="gtsportControlArea">
+                <input type="button" name="newRegion" value="New Region" class="btn btn-primary" ng-click="regionSelect('')" />
+            </div>
+            <div class="gtsportList">
+                <md-list>
+                    <md-list-item ng-click="regionSelect(listRegion.primaryKey)" ng-repeat="listRegion in regions | orderBy: 'description'">
+                        <p ng-class="{gtsportSelectedItem: selectedRegion===listRegion.primaryKey}">{{listRegion.description}}</p>
+                    </md-list-item>
+                </md-list>
+            </div>
         </div>
         <div id="regionSection" class="gtsportUserArea">
             <input type="text" name="regionDescription" ng-model="workRegion.description" placeholder="Description" class="form-control" required />

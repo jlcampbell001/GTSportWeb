@@ -1,9 +1,6 @@
 ﻿app.controller('carsController', function ($scope, $rootScope) {
     var blankCar = new car('', '', '', 0, 0, 0, 0.00, '', 0, '', 0.00, '', '', '', 0.00, 0.00, 0.00, 0);
 
-    var minCarListSize = 22;
-    var maxCarListSize = 30;
-
     $scope.newCar = new car('', '--New Car--', '', 0, 0, 0, 0.00, '', 0, '', 0.00, '', '', '', 0.00, 0.00, 0.00, 0);
 
     // The car the user is currently working on.
@@ -18,29 +15,44 @@
     // List of all the dealers.
     $scope.dealers = getAllDealers();
 
-    // Sets the car list to a min size or max size.
-    $scope.setCarListSize = function () {
-        var listSize = $scope.cars.length + 1;
-
-        if (listSize < minCarListSize) {
-            listSize = minCarListSize;
-        }
-
-        if (listSize > maxCarListSize) {
-            listSize = maxCarListSize;
-        }
-        return listSize;
-    }
 
     // Selecting a car in the car select list.
-    $scope.carSelect = function () {
-        var primaryKey = $scope.selectedCar;
-
+    $scope.carSelect = function (primaryKey) {
         if (primaryKey === '') {
             $scope.workCar = jQuery.extend({}, blankCar);
         } else {
             $scope.workCar = jQuery.extend({}, findCarByKey(primaryKey));
         }
+        $scope.selectedCar = primaryKey;
     }
+
+    // Check and see if the currently selected car can be deleted.
+    $scope.carAllowDelete = function () {
+        var deleteOK = true;
+
+        if ($scope.workCar.primaryKey === '') {
+            deleteOK = false;
+        }
+
+        return deleteOK;
+    }
+
+    // Delete the currently selected car.
+    $scope.carDelete = function () {
+        deleteCar($scope.workCar.primaryKey);
+
+        $scope.cars = getAllCars();
+        $scope.selectedCar = "";
+        $scope.carSelect('');
+    }
+
+    // Save a new or update a selected car.
+    $scope.carSubmit = function () {
+        saveCar($scope.workCar);
+
+        $scope.cars = getAllCars();
+        $scope.selectedCars = $scope.workCars.primaryKey;
+    }
+
 
 });

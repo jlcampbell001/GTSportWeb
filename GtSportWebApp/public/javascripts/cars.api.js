@@ -77,3 +77,55 @@ function findCarByKey(primaryKey) {
 
     return result;
 }
+
+/*
+Delete the car that matches the passed primary key.
+*/
+function deleteCar(primaryKey) {
+    for (var i = 0; i < carsRootScope.carsData.length; i++) {
+        if (primaryKey === carsRootScope.carsData[i].primaryKey) {
+            carsRootScope.carsData.splice(i, 1);
+        }
+    }
+}
+
+/*
+Save the passed car.
+BackEndTemp - If new it will create a new key.
+*/
+function saveCar(car) {
+    if (car.primaryKey === "") {
+        car.primaryKey = getNextCarKey();
+
+        carsRootScope.carsData.push(jQuery.extend({}, car));
+
+    } else {
+        var oldCar = findCarByKey(car.primaryKey);
+        oldCar.name = car.name;
+        oldCar.dealerKey = car.dealerKey;
+        oldCar.year = car.year;
+        oldCar.level = car.level;
+        oldCar.powerPoints = car.powerPoints;
+        oldCar.price = car.price;
+        oldCar.displacementCC = car.displacementCC;
+        oldCar.horsePower = car.horsePower;
+        oldCar.powerRPM = car.powerRPM;
+        oldCar.torqueFTLB = car.torqueFTLB;
+        oldCar.torqueRPM = car.torqueRPM;
+        oldCar.driveTrain = car.driveTrain;
+        oldCar.aspiration = car.aspiration;
+        oldCar.length = car.length;
+        oldCar.width = car.width;
+        oldCar.height = car.height;
+        oldCar.weight = car.weight;
+    }
+}
+
+// BackEndTemp - remove this function once the link to the backend is done
+function getNextCarKey() {
+    carsRootScope.lastCarNumber++;
+
+    var result = "CAR000000000" + dealersRootScope.lastCarNumber.toString();
+
+    return result;
+}
