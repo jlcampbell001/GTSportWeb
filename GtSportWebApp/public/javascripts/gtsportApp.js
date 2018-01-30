@@ -4,7 +4,7 @@
         initializeOwners($rootScope);
         initializeRegions($rootScope);
         initializeCountries($rootScope);
-        initializeDealers($rootScope);
+        initializeManufacturers($rootScope);
         initializeCars($rootScope);
         initializeOwnedCars($rootScope);
 
@@ -27,9 +27,9 @@ app.config(function ($routeProvider) {
             templateUrl: 'countries.html',
             controller: 'countriesController'
         })
-        .when('/dealers', {
-            templateUrl: 'dealers.html',
-            controller: 'dealersController'
+        .when('/manufacturers', {
+            templateUrl: 'manufacturers.html',
+            controller: 'manufacturersController'
         })
         .when('/cars', {
             templateUrl: 'cars.html',

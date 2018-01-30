@@ -35,8 +35,8 @@
     <Compile Include="public\javascripts\cars.controller.js" />
     <Compile Include="public\javascripts\countries.api.js" />
     <Compile Include="public\javascripts\countries.controller.js" />
-    <Compile Include="public\javascripts\dealers.api.js" />
-    <Compile Include="public\javascripts\dealers.controller.js" />
+    <Compile Include="public\javascripts\manufacturers.api.js" />
+    <Compile Include="public\javascripts\manufacturers.controller.js" />
     <Compile Include="public\javascripts\gtsportApp.js" />
     <Compile Include="public\javascripts\ownedcars.api.js" />
     <Compile Include="public\javascripts\ownedcars.controller.js" />
@@ -50,7 +50,7 @@
     <Content Include="package.json" />
     <Content Include="public\cars.html" />
     <Content Include="public\countries.html" />
-    <Content Include="public\dealers.html" />
+    <Content Include="public\manufacturers.html" />
     <Content Include="public\ownedcars.html" />
     <Content Include="public\owners.html" />
     <Content Include="public\index.html" />

@@ -1,0 +1,27 @@
+﻿<div class="gtsportWorkArea">
+    <form ng-submit="manufacturerSubmit()" class="form-horizontal">
+        <div id="manufacturersList" class="form-group gtsportListBox">
+            <div class="gtsportControlArea">
+                <input type="button" name="newManufacturer" value="New Manuf" class="btn btn-primary" ng-click="manufacturerSelect('')" />
+            </div>
+            <div class="gtsportList">
+                <md-list>
+                    <md-list-item ng-click="manufacturerSelect(listManufacturer.primaryKey)" ng-repeat="listManufacturer in manufacturers | orderBy: 'name'">
+                        <p ng-class="{gtsportSelectedItem: selectedManufacturer===listManufacturer.primaryKey}">{{listManufacturer.name}}</p>
+                    </md-list-item>
+                </md-list>
+            </div>
+        </div>
+        <div id="manufacturerSection" class="gtsportUserArea">
+            <input type="text" name="manufacturerName" ng-model="workManufacturer.name" placeholder="Name" class="form-control" required />
+            <label class="control-label">Country: </label>
+            <select ng-model="workManufacturer.countryKey" class="form-control" required>
+                <option value="{{listCountry.primaryKey}}" ng-repeat="listCountry in countries | orderBy: 'description'">
+                    {{listCountry.description}}
+                </option>
+            </select>
+            <input type="submit" name="manufacturerSubmit" value="Submit" class="btn btn-primary" />
+            <input type="button" name="manufacturerDelete" value="Delete" ng-click="manufacturerDelete()" ng-show="manufacturerAllowDelete()" class="btn btn-danger" />
+        </div>
+    </form>
+</div>

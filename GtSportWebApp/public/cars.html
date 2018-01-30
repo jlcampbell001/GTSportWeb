@@ -14,11 +14,11 @@
         </div>
         <div id="carSection" class="gtsportUserArea carsUserArea">
             <input type="text" name="carName" ng-model="workCar.name" placeholder="Name" class="form-control" required />
-            <label class="control-label col-lg-1">Dealer: </label>
+            <label class="control-label col-lg-1">Manuf: </label>
             <div class="col-lg-11">
-                <select ng-model="workCar.dealerKey" class="form-control" required>
-                    <option value="{{listDealer.primaryKey}}" ng-repeat="listDealer in dealers | orderBy: 'name'">
-                        {{listDealer.name}}
+                <select ng-model="workCar.manufacturerKey" class="form-control" required>
+                    <option value="{{listManufacturer.primaryKey}}" ng-repeat="listManufacturer in manufacturers | orderBy: 'name'">
+                        {{listManufacturer.name}}
                     </option>
                 </select>
             </div>
@@ -33,13 +33,26 @@
                 </div>
             </div>
             <div class="col-lg-12">
-                <label class="col-lg-1 control-label">Level:</label>
-                <div class="col-lg-2">
-                    <input type="number" name="carLevel" ng-model="workCar.level" min="0" max="11" class="form-control" />
-                </div>
-                <label class="col-lg-1 control-label">Power Points:</label>
-                <div class="col-lg-3">
-                    <input type="number" name="carPowerPoints" ng-model="workCar.powerPoints" min="0" max="1100" class="form-control" />
+                <label class="col-lg-1 control-label">Category:</label>
+                <div class="col-lg-4">
+                    <select ng-model="workCar.category" class="form-control">
+                        <option value=""></option>
+                        <option value="01N100">N100</option>
+                        <option value="02N200">N200</option>
+                        <option value="03N300">N300</option>
+                        <option value="04N400">N400</option>
+                        <option value="05N500">N500</option>
+                        <option value="06N600">N600</option>
+                        <option value="07N700">N700</option>
+                        <option value="08N800">N800</option>
+                        <option value="09N900">N900</option>
+                        <option value="10N1000">N1000</option>
+                        <option value="11GR4">GR.4</option>
+                        <option value="12GR3">GR.3</option>
+                        <option value="13GR1">GR.1</option>
+                        <option value="14GRB">GR.B</option>
+                        <option value="15GRX">GR.X</option>
+                    </select>
                 </div>
             </div>
             <div class="col-lg-12">
@@ -51,7 +64,7 @@
             <div class="col-lg-12">
                 <label class="col-lg-1 control-label">Horse Power:</label>
                 <div class="col-lg-2">
-                    <input type="number" name="carHorsePower" ng-model="workCar.horsePower" min="0" class="form-control" />
+                    <input type="number" name="carHorsePower" ng-model="workCar.maxPower" min="0" class="form-control" />
                 </div>
                 <label class="col-lg-1 control-label">Power RPM:</label>
                 <div class="col-lg-3">
@@ -109,6 +122,30 @@
                 <label class="col-lg-1 control-label">Weight:</label>
                 <div class="col-lg-3">
                     <input type="number" name="carWeight" ng-model="workCar.weight" min="0" step="any" class="form-control" />
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <label class="col-lg-1 control-label">Max Spd:</label>
+                <div class="col-lg-3">
+                    <input type="number" name="carMaxSpeed" ng-model="workCar.maxSpeed" min="0.0" step="0.1" max ="10.0" class="form-control" />
+                </div>
+                <label class="col-lg-1 control-label">Accel:</label>
+                <div class="col-lg-3">
+                    <input type="number" name="carAcceleration" ng-model="workCar.acceleration" min="0.0" step="any" max="10.0" class="form-control" />
+                </div>
+            </div>
+            <div class="col-lg-12">
+                <label class="col-lg-1 control-label">Braking:</label>
+                <div class="col-lg-3">
+                    <input type="number" name="carBraking" ng-model="workCar.braking" min="0.0" step="0.1" max="10.0" class="form-control" />
+                </div>
+                <label class="col-lg-1 control-label">Cornering:</label>
+                <div class="col-lg-3">
+                    <input type="number" name="carCornering" ng-model="workCar.cornering" min="0.0" step="any" max="10.0" class="form-control" />
+                </div>
+                <label class="col-lg-1 control-label">Stability:</label>
+                <div class="col-lg-3">
+                    <input type="number" name="carStability" ng-model="workCar.stability" min="0.0" step="any" max="10.0" class="form-control" />
                 </div>
             </div>
             <div class="col-lg-12">

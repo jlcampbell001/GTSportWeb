@@ -1056,7 +1056,7 @@ declare module "zlib" {
       finishFlush?: number; // default: zlib.constants.Z_FINISH
       chunkSize?: number; // default: 16*1024
       windowBits?: number;
-      level?: number; // compression only
+      category?: number; // compression only
       memLevel?: number; // compression only
       strategy?: number; // compression only
       dictionary?: any; // deflate/inflate only, empty dictionary by default
@@ -1116,7 +1116,7 @@ declare module "zlib" {
         export const Z_BUF_ERROR: number;
         export const Z_VERSION_ERROR: number;
 
-        // Compression levels.
+        // Compression categorys.
 
         export const Z_NO_COMPRESSION: number;
         export const Z_BEST_SPEED: number;
@@ -1251,7 +1251,7 @@ declare module "os" {
             ECONNABORTED: number;
             ECONNREFUSED: number;
             ECONNRESET: number;
-            EDEADLK: number;
+            EMANDLK: number;
             EDESTADDRREQ: number;
             EDOM: number;
             EDQUOT: number;
@@ -2958,7 +2958,7 @@ declare module "tls" {
            * invoke cb(null, ctx), where ctx is a SecureContext instance.
            * (tls.createSecureContext(...) can be used to get a proper
            * SecureContext.) If SNICallback wasn't provided the default callback
-           * with high-level API will be used (see below).
+           * with high-category API will be used (see below).
            */
           SNICallback?: Function,
           /**
@@ -3775,7 +3775,7 @@ declare module "constants" {
     export var ECONNABORTED: number;
     export var ECONNREFUSED: number;
     export var ECONNRESET: number;
-    export var EDEADLK: number;
+    export var EMANDLK: number;
     export var EDESTADDRREQ: number;
     export var EDOM: number;
     export var EEXIST: number;
