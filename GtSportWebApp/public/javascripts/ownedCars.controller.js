@@ -2,13 +2,17 @@
     var blankOwnedcar = new ownedcar('', $rootScope.current_owner.primaryKey, '', '', '', 0, new Date());
     
     // The car the user is currently working with.
-    $scope.workcar = new car('', '', '', 0, 0, 0, 0.00, '', 0, '', 0.00, '', '', '', 0.00, 0.00, 0.00, 0);
+    $scope.workCar = new car('', '', '', 0, 0, 0, 0.00, '', 0, '', 0.00, '', '', '', 0.00, 0.00, 0.00, 0);
 
     // Currently selected owned car in the owned car select list.
     $scope.selectedOwnedcar = '';
     
     // List of all the owned cars.
     $scope.ownedcars = getOwnedcarList();
+
+    $scope.selectedOwnedcar = $scope.ownedcars[0].carKey;
+    $scope.workCar = jQuery.extend({}, findCarByKey($scope.selectedOwnedcar));
+
 
     // Selecting a car in the owner car select list.
     $scope.ownedcarSelect = function (carKey) {
@@ -18,7 +22,7 @@
 
     // Get a list of owned cars for the current owner.
     function getOwnedcarList() {
-        var cars = getAllCars();
+        var cars = getAllCars(true);
 
         var result = [];
         
@@ -30,4 +34,8 @@
         
         return result;
     };
+
+    $scope.getCarCategoryDesc = function (value) {
+        return getCategoryDescription(value);
+    }
 });

@@ -1,5 +1,33 @@
 ﻿<div name="ownedcarsWorkArea" class="gtsportWorkArea">
     <div>Owner Statistics Area<br />Needs Work</div>
+    <div class="ownerCarInfoArea">
+        <span class="ownerCarName">{{workCar.name}}</span>
+        <div>
+            <span class="ownerCarInfo ownerCarImportantInfo"><label class="ownerCarLabel">Category:</label> {{getCarCategoryDesc(workCar.category)}}</span>
+            <span class="ownerCarInfo ownerCarImportantInfo"><label class="ownerCarLabel">Year:</label> {{workCar.year}}</span>
+            <span class="ownerCarInfo"><label class="ownerCarLabel">Price:</label> {{workCar.price.toLocaleString(undefined, {minimumFractionDigits: 2, maximumFractionDigits: 2})}}</span>
+            <span class="ownerCarInfo"><label class="ownerCarLabel">Length:</label> {{workCar.length.toFixed(1)}}</span>
+            <span class="ownerCarInfo"><label class="ownerCarLabel">Width:</label> {{workCar.width.toFixed(1)}}</span>
+            <span class="ownerCarInfo"><label class="ownerCarLabel">Height:</label> {{workCar.height.toFixed(1)}}</span>
+            <span class="ownerCarInfo"><label class="ownerCarLabel">Width:</label> {{workCar.weight}}</span>
+        </div>
+        <div>
+            <span class="ownerCarInfo"><label class="ownerCarLabel">Displacement:</label> {{workCar.displacementCC}}</span>
+            <span class="ownerCarInfo ownerCarImportantInfo"><label class="ownerCarLabel">Max Power:</label> {{workCar.maxPower}}</span>
+            <span class="ownerCarInfo"><label class="ownerCarLabel">Power RPM:</label> {{workCar.powerRPM}}</span>
+            <span class="ownerCarInfo"><label class="ownerCarLabel">Torque FTLB:</label> {{workCar.torqueFTLB.toFixed(1)}}</span>
+            <span class="ownerCarInfo"><label class="ownerCarLabel">Torque Power:</label> {{workCar.torquePower}}</span>
+            <span class="ownerCarInfo ownerCarImportantInfo"><label class="ownerCarLabel">Drive Train:</label> {{workCar.driveTrain}}</span>
+            <span class="ownerCarInfo"><label class="ownerCarLabel">Aspiration:</label> {{workCar.aspiration}}</span>
+        </div>
+        <div>
+            <span class="ownerCarInfo"><label class="ownerCarLabel">Max Speed:</label> {{workCar.maxSpeed.toFixed(1)}}</span>
+            <span class="ownerCarInfo"><label class="ownerCarLabel">Accleration:</label> {{workCar.acceleration.toFixed(1)}}</span>
+            <span class="ownerCarInfo"><label class="ownerCarLabel">Braking:</label> {{workCar.braking.toFixed(1)}}</span>
+            <span class="ownerCarInfo"><label class="ownerCarLabel">Cornering:</label> {{workCar.cornering.toFixed(1)}}</span>
+            <span class="ownerCarInfo"><label class="ownerCarLabel">Stability:</label> {{workCar.stability.toFixed(1)}}</span>
+        </div>
+    </div>
     <form class="form-horizontal">
         <div id="ownedcarsList" class="form-group gtsportListBox carsListBox">
             <div class="gtsportControlArea">
@@ -8,8 +36,9 @@
                 <md-list>
                     <md-list-item ng-click="ownedcarSelect(listOwnedcar.carKey)" ng-repeat="listOwnedcar in ownedcars | orderBy: 'carName'">
                         <p ng-class="{gtsportSelectedItem: selectedOwnedcar===listOwnedcar.carKey}">
-                        <span class="ownedCarCount" ng-show="listOwnedcar.carCount > 0">({{listOwnedcar.carCount}}) </span>
-                        {{listOwnedcar.carName}}</p>
+                            <span class="ownedCarCount" ng-show="listOwnedcar.carCount > 0">({{listOwnedcar.carCount}}) </span>
+                            {{listOwnedcar.carName}}
+                        </p>
                     </md-list-item>
                 </md-list>
             </div>

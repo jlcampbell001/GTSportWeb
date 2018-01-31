@@ -5,7 +5,7 @@ declare module "express" {
     import * as core from "express-serve-static-core";
 
     /**
-     * Creates an Express application. The express() function is a top-category function exported by the express module.
+     * Creates an Express application. The express() function is a top-level function exported by the express module.
      */
     function e(): core.Express;
 

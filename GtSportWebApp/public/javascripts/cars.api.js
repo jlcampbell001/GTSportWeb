@@ -26,6 +26,11 @@ function car(primaryKey, name, manufacturerKey, year, category, price,
     this.stability = stability;
 }
 
+function category(value, description) {
+    this.value = value;
+    this.description = description;
+}
+
 // Variable to hold the root scope.
 var carsRootScope;
 
@@ -61,18 +66,50 @@ function initializeCars($rootScope) {
             10.0, 4.0, 2.0, 2.0, 5.0)];
     
     carsRootScope.lastCarNumber = 9;
+
+    carsRootScope.categories = [new category('01N100', 'N100'),
+        new category('02N200', 'N200'),
+        new category('03N300', 'N300'),
+        new category('04N400', 'N400'),
+        new category('05N500', 'N500'),
+        new category('06N600', 'N600'),
+        new category('07N700', 'N700'),
+        new category('08N800', 'N800'),
+        new category('09N900', 'N900'),
+        new category('10N1000', 'N1000'),
+        new category('11GR4', 'GR.4'),
+        new category('12GR3', 'GR.3'),
+        new category('13GR1', 'GR.1'),
+        new category('14GRB', 'GR.B'),
+        new category('15GRX', 'GR.X')];
 }
 
 /*
 Get a list of all the cars.
 */
-function getAllCars() {
+function getAllCars(sortByName) {
     var result = [];
 
     for (var i = 0; i < carsRootScope.carsData.length; i++) {
         result.push(jQuery.extend({}, carsRootScope.carsData[i]));
     }
 
+    if (sortByName)
+        result = result.sort(compareCars);
+
+    return result;
+}
+
+/*
+Compare the cars by thier name.
+*/
+function compareCars(car1, car2) {
+    var result = 0;
+
+    if (car1.name < car2.name)
+        reuslt = -1;
+    if (car1.name > car2.name)
+        result = 1;
     return result;
 }
 
@@ -143,6 +180,17 @@ function getNextCarKey() {
     carsRootScope.lastCarNumber++;
 
     var result = "CAR000000000" + manufacturersRootScope.lastCarNumber.toString();
+
+    return result;
+}
+
+function getCategoryDescription(categoryValue) {
+    var result = '';
+    for (var i = 0; i < carsRootScope.categories.length; i++) {
+        if (categoryValue === carsRootScope.categories[i].value) {
+            result = carsRootScope.categories[i].description;
+        }
+    }
 
     return result;
 }

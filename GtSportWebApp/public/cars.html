@@ -37,21 +37,9 @@
                 <div class="col-lg-4">
                     <select ng-model="workCar.category" class="form-control">
                         <option value=""></option>
-                        <option value="01N100">N100</option>
-                        <option value="02N200">N200</option>
-                        <option value="03N300">N300</option>
-                        <option value="04N400">N400</option>
-                        <option value="05N500">N500</option>
-                        <option value="06N600">N600</option>
-                        <option value="07N700">N700</option>
-                        <option value="08N800">N800</option>
-                        <option value="09N900">N900</option>
-                        <option value="10N1000">N1000</option>
-                        <option value="11GR4">GR.4</option>
-                        <option value="12GR3">GR.3</option>
-                        <option value="13GR1">GR.1</option>
-                        <option value="14GRB">GR.B</option>
-                        <option value="15GRX">GR.X</option>
+                        <option value="{{category.value}}" ng-repeat="category in categories | orderBy: 'value'">
+                            {{category.description}}
+                        </option>
                     </select>
                 </div>
             </div>
@@ -62,7 +50,7 @@
                 </div>
             </div>
             <div class="col-lg-12">
-                <label class="col-lg-1 control-label">Horse Power:</label>
+                <label class="col-lg-1 control-label">Max Power:</label>
                 <div class="col-lg-2">
                     <input type="number" name="carHorsePower" ng-model="workCar.maxPower" min="0" class="form-control" />
                 </div>

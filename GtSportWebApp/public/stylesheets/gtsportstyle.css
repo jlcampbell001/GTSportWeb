@@ -7634,3 +7634,20 @@ input[type="radio"], input[type="checkbox"] {
     color: blue; 
     font-weight: bold;
 }
+.ownerCarInfoArea {
+    border-top:solid 1px gray;
+    border-bottom:solid 1px gray;
+
+}
+.ownerCarName {
+    font-weight: bold;
+}
+.ownerCarLabel {
+    font-weight: bold;
+}
+.ownerCarInfo {
+    padding-right: 10px;
+}
+.ownerCarImportantInfo {
+    color:blue;
+}
