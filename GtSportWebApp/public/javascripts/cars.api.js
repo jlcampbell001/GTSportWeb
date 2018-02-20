@@ -179,7 +179,7 @@ function saveCar(car) {
 function getNextCarKey() {
     carsRootScope.lastCarNumber++;
 
-    var result = "CAR000000000" + manufacturersRootScope.lastCarNumber.toString();
+    var result = "CAR000000000" + carsRootScope.lastCarNumber.toString();
 
     return result;
 }

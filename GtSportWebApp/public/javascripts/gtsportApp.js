@@ -6,7 +6,7 @@
         initializeCountries($rootScope);
         initializeManufacturers($rootScope);
         initializeCars($rootScope);
-        initializeOwnedCars($rootScope);
+        initializeOwnedcars($rootScope);
 
         var defaultOwner = getDefaultOwner();
 
